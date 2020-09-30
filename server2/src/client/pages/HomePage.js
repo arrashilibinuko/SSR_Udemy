@@ -11,5 +11,4 @@ const Home  = () => {
 
 export default {
     component: Home
-
 };

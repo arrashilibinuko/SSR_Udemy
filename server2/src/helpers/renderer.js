@@ -1,32 +1,68 @@
+// import React from 'react';
+// import { renderToString } from 'react-dom/server';
+// // import Home from '../client/components/Home';
+// import { StaticRouter } from 'react-router-dom';
+// import { Provider } from 'react-redux';
+// import { renderRoutes } from 'react-router-config';
+// import serialize from 'serialize-javascript';
+// import Routes from '../client/Routes';
+
+
+// export default (req, store) => {
+//     const content = renderToString(
+//         <Provider store={store}>
+//             <StaticRouter location={req.path} context={{}}>
+//                 <div>{renderRoutes(Routes)}</div>
+//             </StaticRouter>
+//         </Provider>
+//     );
+
+//     return `
+//         <html>
+//             <head></head>
+//             <body>
+//                 <div id="root">${content}</div>
+//                 <script>
+//                     window.INITIAL_STATE = ${serialize(store.getState())}
+//                 </script>
+//                 <script src="/bundleclient.js"></script>
+//             </body>
+//         </html>
+//     `;
+// };
+
+
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-// import Home from '../client/components/Home';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
+import { Helmet } from 'react-helmet';
 import Routes from '../client/Routes';
 
+export default (req, store, context) => {
+  const content = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.path} context={context}>
+        <div>{renderRoutes(Routes)}</div>
+      </StaticRouter>
+    </Provider>
+  );
 
-export default (req, store) => {
-    const content = renderToString(
-        <Provider store={store}>
-            <StaticRouter location={req.path} context={{}}>
-                <div>{renderRoutes(Routes)}</div>
-            </StaticRouter>
-        </Provider>
-    );
+//   const helmet = Helmet.renderStatic();
 
-    return `
-        <html>
-            <head></head>
-            <body>
-                <div id="root">${content}</div>
-                <script>
-                    window.INITIAL_STATE = ${serialize(store.getState())}
-                </script>
-                <script src="bundle.js"></script>
-            </body>
-        </html>
-    `;
+  return `
+    <html>
+      <head>
+      </head>
+      <body>
+        <div id="root">${content}</div>
+        <script>
+          window.INITIAL_STATE = ${serialize(store.getState())}
+        </script>
+        <script src="bundle.js"></script>
+      </body>
+    </html>
+  `;
 };

@@ -1,31 +1,58 @@
+// const path = require('path');
+// const merge = require('webpack-merge');
+// const baseConfig = require('./webpack.base');
+// const webpackNodeExternals = require('webpack-node-externals');
+
+// const config = {
+
+//     mode: 'none',
+
+//     //Infrom webpack that we r building a bundle
+//     //for nodeJS, rather than for the browser
+//     target:'node',
+
+
+//     //Tell webpack the root file of our 
+//     //server application
+//     entry:'./src/index.js',
+//     //entry:'./src/client/client.js',
+
+
+//     //Tell webpack where to put the output file 
+//     //that is generated
+//     output: {
+//         filename: 'bundleserver.js',
+//         path: path.resolve(__dirname, 'build')
+//     },
+
+//     externals: [webpackNodeExternals()]
+
+// };
+
+// module.exports = merge(baseConfig, config);
+
 const path = require('path');
 const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base');
+const baseConfig = require('./webpack.base.js');
 const webpackNodeExternals = require('webpack-node-externals');
 
 const config = {
+  // Inform webpack that we're building a bundle
+  // for nodeJS, rather than for the browser
+  target: 'node',
 
-    mode: 'none',
+  // Tell webpack the root file of our
+  // server application
+  entry: './src/index.js',
 
-    //Infrom webpack that we r building a bundle
-    //for nodeJS, rather than for the browser
-    target:'node',
+  // Tell webpack where to put the output file
+  // that is generated
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'build')
+  },
 
-
-    //Tell webpack the root file of our 
-    //server application
-    entry:'./src/index.js',
-
-
-    //Tell webpack where to put the output file 
-    //that is generated
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'build')
-    },
-
-    externals: [webpackNodeExternals()]
-
+  externals: [webpackNodeExternals()]
 };
 
 module.exports = merge(baseConfig, config);
