@@ -138,9 +138,11 @@ app.get('*', function (req, res) {
         return route.loadData ? route.loadData(store) : null;
     });
 
-    console.log(promises);
-
-    res.send((0, _renderer2.default)(req, store));
+    Promise.all(promises).then(function () {
+        res.send((0, _renderer2.default)(req, store));
+    }).catch(function (err) {
+        console.log(err);
+    });
 });
 
 app.listen(3000, function () {
