@@ -23,9 +23,9 @@ app.get('*', (req,res) => {
         <html>
             <head></head>
             <body>
-                <div>${content}</div>
+                <div id="root">${content}</div>
+                <script src="bundle.js"></script>
             </body>
-            <script src="bundle.js"></script>
         </html>
     `;
     res.send(html);
