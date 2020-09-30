@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = () => {
+function Home() {
     return (
         <div>
             <div>Im the test home VERY VERy BEST component</div>
