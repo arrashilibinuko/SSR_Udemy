@@ -1,0 +1,6 @@
+P: JSX on the server
+S: Run webpack on all server sde, execute the bundle
+
+P: Need to turn components into HTML
+S: Use the 'react-dom/server', 'renderToString()'
+
