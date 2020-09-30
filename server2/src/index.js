@@ -6,6 +6,7 @@
 // const app = express();
 
 //ES6 / ES2015 import statements
+import 'babel-polyfill';
 import express from 'express';
 // import React from 'react';
 // import { renderToString } from 'react-dom/server'; //is a named exports
