@@ -4,3 +4,8 @@ S: Run webpack on all server sde, execute the bundle
 P: Need to turn components into HTML
 S: Use the 'react-dom/server', 'renderToString()'
 
+P: Static bundle render
+S: Nodemon, if Home.js index.hs are changed, Rerun webpack n restart server
+
+P: Event handler not set up, ie JS code not set up
+S: Create 2 seperate JS bundle, (server and react app)(created), (react app)(to be created and shipped to browser)

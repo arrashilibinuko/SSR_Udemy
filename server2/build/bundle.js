@@ -25895,9 +25895,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Home = function Home() {
     return _react2.default.createElement(
-        'div',
+        "div",
         null,
-        'Home component Webpack and Nodemon success'
+        _react2.default.createElement(
+            "div",
+            null,
+            "Home component Webpack and Nodemon success"
+        ),
+        _react2.default.createElement(
+            "button",
+            { onClick: function onClick() {
+                    return console.log("Hi there!");
+                } },
+            "Press Me!"
+        )
     );
 };
 
