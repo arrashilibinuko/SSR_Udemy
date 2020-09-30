@@ -11,6 +11,7 @@ import express from 'express';
 // import { renderToString } from 'react-dom/server'; //is a named exports
 // import Home from './client/components/Home';
 import renderer from './helpers/renderer';
+import createStore from './helpers/createStore';
 
 const app = express();
 
@@ -18,7 +19,13 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('*', (req,res) => {
-    res.send(renderer(req));
+    const store = createStore();
+
+    //Some logic to initalize
+    //and load data into the store
+
+
+    res.send(renderer(req, store));
 });
 
 app.listen(3000, () => {
