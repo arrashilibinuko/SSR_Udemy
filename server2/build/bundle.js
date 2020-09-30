@@ -132,11 +132,13 @@ app.use(_express2.default.static('public'));
 app.get('*', function (req, res) {
     var store = (0, _createStore2.default)();
 
-    (0, _reactRouterConfig.matchRoutes)(_Routes2.default, req.path).map(function (_ref) {
+    var promises = (0, _reactRouterConfig.matchRoutes)(_Routes2.default, req.path).map(function (_ref) {
         var route = _ref.route;
 
-        return route.loadData ? route.loadData() : null;
+        return route.loadData ? route.loadData(store) : null;
     });
+
+    console.log(promises);
 
     res.send((0, _renderer2.default)(req, store));
 });
@@ -332,8 +334,9 @@ function mapStateToProps(state) {
     return { users: state.users };
 }
 
-function loadData() {
-    console.log('Trying to load data');
+function loadData(store) {
+    // console.log('Trying to load data')
+    return store.dispatch((0, _actions.fetchUsers)());
 }
 
 exports.loadData = loadData;
