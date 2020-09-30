@@ -182,13 +182,13 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Home = __webpack_require__(6);
+var _HomePage = __webpack_require__(6);
 
-var _Home2 = _interopRequireDefault(_Home);
+var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _UsersList = __webpack_require__(7);
+var _UsersListPage = __webpack_require__(7);
 
-var _UsersList2 = _interopRequireDefault(_UsersList);
+var _UsersListPage2 = _interopRequireDefault(_UsersListPage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -204,12 +204,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import { Route } from 'react-router-dom';
 exports.default = [{
     path: '/',
-    component: _Home2.default,
+    component: _HomePage2.default,
     exact: true
 }, {
-    loadData: _UsersList.loadData,
+    loadData: _UsersListPage.loadData,
     path: '/users',
-    component: _UsersList2.default
+    component: _UsersListPage2.default
 }];
 
 /***/ }),
