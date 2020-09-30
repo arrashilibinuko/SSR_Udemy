@@ -33815,8 +33815,6 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(12);
-
 var _Home = __webpack_require__(58);
 
 var _Home2 = _interopRequireDefault(_Home);
@@ -33827,14 +33825,24 @@ var _UsersList2 = _interopRequireDefault(_UsersList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function () {
-    return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/users', component: _UsersList2.default })
-    );
-};
+// export default () => {
+//     return (
+//         <div>
+//             <Route exact path="/" component={Home} />
+//             <Route exact path="/users" component={UsersList} />
+//         </div>
+//     )
+// }
+
+// import { Route } from 'react-router-dom';
+exports.default = [{
+    path: '/',
+    component: _Home2.default,
+    exact: true
+}, {
+    path: '/users',
+    component: _UsersList2.default
+}];
 
 /***/ }),
 /* 58 */
