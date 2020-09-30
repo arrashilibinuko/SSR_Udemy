@@ -99,6 +99,10 @@ var _express2 = _interopRequireDefault(_express);
 
 var _reactRouterConfig = __webpack_require__(3);
 
+var _expressHttpProxy = __webpack_require__(20);
+
+var _expressHttpProxy2 = _interopRequireDefault(_expressHttpProxy);
+
 var _Routes = __webpack_require__(4);
 
 var _Routes2 = _interopRequireDefault(_Routes);
@@ -116,7 +120,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import React from 'react';
 // import { renderToString } from 'react-dom/server'; //is a named exports
 // import Home from './client/components/Home';
-// common JS importation
+var app = (0, _express2.default)(); // common JS importation
 // const express = require('express');
 // const React = require('react');
 // const renderToString = require('react-dom/server').renderToString;
@@ -124,7 +128,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // const app = express();
 
 //ES6 / ES2015 import statements
-var app = (0, _express2.default)();
+
+
+app.use('/api', (0, _expressHttpProxy2.default)('http://react-ssr-api-herokuapp.com', {
+    proxyReqBodyDecorator: function proxyReqBodyDecorator(opts) {
+        opts.header['X-forwarded-host'] = 'localhost:3000';
+        return opts;
+    }
+}));
 
 //Tells express to treat ./public as static/available to outside
 app.use(_express2.default.static('public'));
@@ -573,6 +584,12 @@ exports.default = function () {
 /***/ (function(module, exports) {
 
 module.exports = require("serialize-javascript");
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+module.exports = require("express-http-proxy");
 
 /***/ })
 /******/ ]);
