@@ -2,9 +2,9 @@ import React from 'react';
 
 const Home  = () => {
     return (
-    <div>
-        <div>Home component Webpack and Nodemon success</div>
-        <button onClick={() => console.log("Hi there!")}>Press Me!</button>
+    <div className="center-align" style={{marginTop:'200px'}}>
+        <h3>Welcom</h3>
+        <p>Check Out these awsome features</p>
     </div>
     );
 };
